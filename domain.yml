@@ -16,18 +16,45 @@ entities:
 slots:
   nome:
     type: text
+    mappings:
+    - type: from_entity
+      entity: nome
+
   idade:
     type: text
+    mappings:
+    - type: from_entity
+      entity: idade
+
   sintomas:
     type: list
+    mappings:
+    - type: from_entity
+      entity: sintoma
+
   condicoes_medicas:
     type: list
+    mappings:
+    - type: from_entity
+      entity: condicao_medica
+
 
 responses:
   utter_questionar_se_robo:
     - text: "Sim, eu sou um assistente virtual programado para ajudar com anamnese. Como posso ajudar você hoje?"
     - text: "Sou um chatbot criado para auxiliar no processo de anamnese. Existe algo em que eu possa ajudar?"
     - text: "Eu sou apenas um robo que vai ajudar o medico a identificar o seu problema. "
+    
+  utter_pedir_correcao:
+    - text: "Pedrao, parece que faltam informacoes, teria como esclarecer isso?"
+    - text: "Desculpe-me, não consegui entender corretamente. Pode repetir com mais clareza?"
+    
+  utter_saudacao:
+    - text: "Olá! Como posso ajudar você hoje?"
+    - text: "Bem-vindo! Em que posso ser útil?"
+  utter_despedida:
+    - text: "Foi um prazer ajudar. Até a próxima!"
+    - text: "Tudo certo! Se precisar de mais alguma coisa, estou aqui. Até mais!"
     
   utter_perguntar_nome:
     - text: "Oi, tudo bem, para que eu possa te ajuda, primeiro informe seu nome"

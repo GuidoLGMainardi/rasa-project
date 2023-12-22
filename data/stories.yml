@@ -30,7 +30,7 @@ stories:
       - sintoma: "febre"
   - action: utter_perguntar_condicoes_medicas
   - intent: negar_informacoes
-  - action: utter_perguntar_nome
+  - action: utter_pedir_correcao
   - intent: informar_dados_pessoais
     entities:
       - nome: "Carlos"

@@ -108,9 +108,3 @@ nlu:
 - regex: idade
   examples: |
     - [0-9]{1,3}
-    
-- name: RegexEntityExtractor
-  use_lookup_tables: true
-  use_regexes: true
-  case_sensitive: false
-
