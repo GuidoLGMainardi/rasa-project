@@ -1,0 +1,65 @@
+version: "3.1"
+
+stories:
+
+- story: Anamnese simples
+  steps:
+  - intent: informar_dados_pessoais
+    entities:
+      - nome: "Ana"
+      - idade: "25"
+  - action: utter_perguntar_sintomas
+  - intent: descrever_sintomas
+    entities:
+      - sintoma: "dor de cabeça"
+  - action: utter_perguntar_condicoes_medicas
+  - intent: informar_historico_medico
+    entities:
+      - condicao_medica: "asma"
+  - action: utter_confirmar_anamnese
+
+- story: Anamnese com dados incorretos
+  steps:
+  - intent: informar_dados_pessoais
+    entities:
+      - nome: "Carlos"
+      - idade: "40"
+  - action: utter_perguntar_sintomas
+  - intent: descrever_sintomas
+    entities:
+      - sintoma: "febre"
+  - action: utter_perguntar_condicoes_medicas
+  - intent: negar_informacoes
+  - action: utter_perguntar_nome
+  - intent: informar_dados_pessoais
+    entities:
+      - nome: "Carlos"
+      - idade: "39"
+  - action: utter_confirmar_anamnese
+
+- story: Anamnese detalhada
+  steps:
+  - intent: informar_dados_pessoais
+    entities:
+      - nome: "Juliana"
+      - idade: "35"
+  - action: utter_perguntar_sintomas
+  - intent: descrever_sintomas
+    entities:
+      - sintoma: "náuseas"
+      - sintoma: "tonturas"
+  - action: utter_perguntar_condicoes_medicas
+  - intent: informar_historico_medico
+    entities:
+      - condicao_medica: "diabetes tipo 2"
+  - action: utter_confirmar_anamnese
+
+- story: Pergunta sobre natureza do bot
+  steps:
+  - intent: questionar_se_robo
+  - action: utter_questionar_se_robo
+  - intent: informar_dados_pessoais
+    entities:
+      - nome: "Pedro"
+      - idade: "22"
+  - action: utter_perguntar_sintomas

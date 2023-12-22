@@ -1,0 +1,61 @@
+intents:
+  - informar_dados_pessoais
+  - descrever_sintomas
+  - informar_historico_medico
+  - confirmar_informacoes
+  - negar_informacoes
+  - questionar_se_robo
+
+
+entities:
+  - nome
+  - idade
+  - sintoma
+  - condicao_medica_preexistente
+
+slots:
+  nome:
+    type: text
+  idade:
+    type: text
+  sintomas:
+    type: list
+  condicoes_medicas:
+    type: list
+
+responses:
+  utter_questionar_se_robo:
+    - text: "Sim, eu sou um assistente virtual programado para ajudar com anamnese. Como posso ajudar você hoje?"
+    - text: "Sou um chatbot criado para auxiliar no processo de anamnese. Existe algo em que eu possa ajudar?"
+    - text: "Eu sou apenas um robo que vai ajudar o medico a identificar o seu problema. "
+    
+  utter_perguntar_nome:
+    - text: "Oi, tudo bem, para que eu possa te ajuda, primeiro informe seu nome"
+    - text: "Olá, qual é o seu nome?"
+    - text: "Oi! Como você se chama?"
+    - text: "Prazer em conhecê-lo! Qual é o seu nome completo?"
+
+  utter_perguntar_idade:
+    - text: "Quantos anos você tem?"
+    - text: "Você pode me informar a sua idade, por favor?"
+    - text: "Qual é a sua idade atual?"
+
+  utter_perguntar_sintomas:
+    - text: "Você pode descrever seus sintomas?"
+    - text: "Como você está se sentindo hoje? Quais sintomas você tem?"
+    - text: "Me conte mais sobre o que você está sentindo agora."
+
+  utter_perguntar_condicoes_medicas:
+    - text: "Você tem alguma condição médica preexistente que devemos saber?"
+    - text: "Existem condições de saúde anteriores que você gostaria de compartilhar comigo?"
+    - text: "Por favor, informe se você tem alguma doença ou condição médica pré-existente."
+
+  utter_confirmar_anamnese:
+    - text: "Obrigado pelas informações. Vamos confirmar: seu nome é {nome}, você tem {idade} anos, seus sintomas são {sintomas} e suas condições médicas são {condicoes_medicas}. Está correto?"
+    - text: "Para confirmar: você se chama {nome}, tem {idade} anos, e está enfrentando {sintomas}, além de ter as condições médicas {condicoes_medicas}. Correto?"
+    - text: "Só para verificar: seu nome é {nome}, sua idade é {idade}, e você relatou {sintomas} e {condicoes_medicas} como suas condições. Está tudo certo?"
+
+
+actions:
+  - validar_dados_paciente
+  - registrar_anamnese

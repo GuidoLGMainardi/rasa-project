@@ -1,0 +1,116 @@
+version: "3.1"
+nlu:
+
+- intent: confirmar_informacoes
+  examples: |
+    - Sim, está tudo correto
+    - Isso mesmo
+    - Está correto, obrigado
+    - Tudo certo com essas informações
+
+- intent: negar_informacoes
+  examples: |
+    - Não, isso não está certo
+    - Há um erro aí
+    - Isso não está correto
+    - Na verdade, não é bem assim
+
+- intent: questionar_se_robo
+  examples: |
+    - Você é um robô?
+    - Isso é um chatbot?
+    - Você é humano ou um programa de computador?
+    - Isso é uma inteligência artificial?
+    - Você é real ou apenas um software?
+    - Isso é uma pessoa ou um bot falando?
+    - Com quem estou falando?
+    
+    
+
+- intent: informar_dados_pessoais
+  examples: |
+    - Meu nome é [Ana](nome) e eu tenho [25](idade) anos
+    - Eu me chamo [Carlos](nome), [40](idade) anos
+    - Sou [Juliana](nome), [35](idade) anos
+    - Chamo-me [Pedro](nome) e tenho [22](idade) anos
+    - [Paulo](nome), [90](idade) anos
+
+- lookup: nome
+  examples: |
+    - Ana
+    - Carlos
+    - Juliana
+    - Pedro
+    # (outros nomes comuns)
+
+
+- intent: descrever_sintomas
+  examples: |
+    - Tenho tido [dores constantes no estômago](sintoma)
+    - Sinto uma [dor aguda no peito](sintoma) às vezes
+    - Estou com [febre](sintoma) e [dor nas articulações](sintoma)
+    - Me sinto com [náuseas](sintoma) e [tonturas](sintoma) frequentes
+    - Tenho experimentado [tosse seca](sintoma) e [fadiga](sintoma)
+
+- intent: informar_historico_medico
+  examples: |
+    - Sou alérgico a [penicilina](medicamento)
+    - Tenho histórico de [asma](condicao_medica) na família
+    - Fui diagnosticado com [hipertensão](condicao_medica)
+    - Estou em tratamento para [diabetes tipo 2](condicao_medica)
+    - Tenho uma prescrição regular de [metformina](medicamento)
+    
+- lookup: nome
+  examples: |
+    - Ana
+    - Carlos
+    - Juliana
+    - Pedro
+    - João
+    - Marta
+    - Lucas
+    - Beatriz
+    - Rafael
+    - Sofia
+
+- lookup: sintoma
+  examples: |
+    - dor de cabeça
+    - náusea
+    - febre
+    - tosse
+    - tontura
+    - fadiga
+    - perda de apetite
+    - dor muscular
+
+- lookup: medicamento
+  examples: |
+    - ibuprofeno
+    - paracetamol
+    - amoxicilina
+    - metformina
+    - insulina
+    - omeprazol
+    - cetirizina
+
+- lookup: condicao_medica
+  examples: |
+    - diabetes
+    - hipertensão
+    - asma
+    - artrite
+    - anemia
+    - colesterol alto
+    - obesidade
+    - doença cardíaca
+
+- regex: idade
+  examples: |
+    - [0-9]{1,3}
+    
+- name: RegexEntityExtractor
+  use_lookup_tables: true
+  use_regexes: true
+  case_sensitive: false
+
