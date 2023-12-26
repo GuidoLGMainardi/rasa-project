@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 stories:
 
 - story: Caminho padrão
@@ -14,13 +14,4 @@ stories:
   - action: utter_acknowledge_problem
   - intent: goodbye
   - action: utter_goodbye
-
-- story: Usuário desiste no meio da conversa
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_ask_contact
-  - intent: provide_contact
-  - action: utter_acknowledge_contact
-  - intent: goodbye
-  - action: utter_goodbye
+  
