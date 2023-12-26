@@ -1,17 +1,22 @@
-version: "2.0"
+version: "3.1"
 rules:
 
 - rule: Saudar no início da conversa
   steps:
   - intent: greet
   - action: utter_greet
+  - action: utter_ask_contact
 
 - rule: Responder ao fornecimento de contato
   steps:
   - intent: provide_contact
   - action: utter_acknowledge_contact
 
-- rule: Perguntar detalhes após descrição do problema
+- rule: Perguntar detalhes após descrição do problema quando contato já fornecido
+  condition:
+  - slot_was_set:
+    - name
+    - email
   steps:
   - intent: describe_problem
   - action: utter_ask_details
