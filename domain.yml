@@ -1,90 +1,67 @@
-version: "3.1"
-
-
+version: "2.0"
 intents:
-  - informar_dados_pessoais
-  - descrever_sintomas
-  - informar_historico_medico
-  - confirmar_informacoes
-  - negar_informacoes
-  - questionar_se_robo
-
+- greet
+- provide_contact
+- describe_problem
+- goodbye
 
 entities:
-  - nome
-  - idade
-  - sintoma
-  - condicoes_medicas
+- name
+- email
 
 slots:
-  nome:
+  name:
     type: text
+    influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: nome
-
-  idade:
+      - type: from_entity
+        entity: name
+  email:
     type: text
+    influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: idade
-
-  sintomas:
-    type: list
-    mappings:
-    - type: from_entity
-      entity: sintoma
-
-  condicoes_medicas:
-    type: list
-    mappings:
-    - type: from_entity
-      entity: condicao_medica
-
+      - type: from_entity
+        entity: email
 
 responses:
-  utter_questionar_se_robo:
-    - text: "Sim, eu sou um assistente virtual programado para ajudar com anamnese. Como posso ajudar você hoje?"
-    - text: "Sou um chatbot criado para auxiliar no processo de anamnese. Existe algo em que eu possa ajudar?"
-    - text: "Eu sou apenas um robo que vai ajudar o medico a identificar o seu problema. "
-    
-  utter_pedir_correcao:
-    - text: "Pedrao, parece que faltam informacoes, teria como esclarecer isso?"
-    - text: "Desculpe-me, não consegui entender corretamente. Pode repetir com mais clareza?"
-    
-  utter_saudacao:
-    - text: "Olá! Como posso ajudar você hoje?"
-    - text: "Bem-vindo! Em que posso ser útil?"
-  utter_despedida:
-    - text: "Foi um prazer ajudar. Até a próxima!"
-    - text: "Tudo certo! Se precisar de mais alguma coisa, estou aqui. Até mais!"
-    
-  utter_perguntar_nome:
-    - text: "Oi, tudo bem, para que eu possa te ajuda, primeiro informe seu nome"
-    - text: "Olá, qual é o seu nome?"
-    - text: "Oi! Como você se chama?"
-    - text: "Prazer em conhecê-lo! Qual é o seu nome completo?"
+  utter_greet:
+  - text: "Olá! Como posso ajudar?"
+  - text: "Oi! Em que posso ser útil hoje?"
+  - text: "Bem-vindo! Como posso auxiliar você?"
 
-  utter_perguntar_idade:
-    - text: "Quantos anos você tem?"
-    - text: "Você pode me informar a sua idade, por favor?"
-    - text: "Qual é a sua idade atual?"
+  utter_ask_contact:
+  - text: "Para começar, poderia me informar seu nome e email?"
+  - text: "Antes de prosseguir, me diga seu nome e email, por favor."
+  - text: "Para que eu possa ajudar, preciso do seu nome e email."
 
-  utter_perguntar_sintomas:
-    - text: "Você pode descrever seus sintomas?"
-    - text: "Como você está se sentindo hoje? Quais sintomas você tem?"
-    - text: "Me conte mais sobre o que você está sentindo agora."
+  utter_acknowledge_contact:
+  - text: "Obrigado! Qual é o problema com o qual você precisa de ajuda?"
+  - text: "Recebi seus dados. Por favor, descreva seu problema."
+  - text: "Agradeço pelas informações. Me conte mais sobre o seu problema."
 
-  utter_perguntar_condicoes_medicas:
-    - text: "Você tem alguma condição médica preexistente que devemos saber?"
-    - text: "Existem condições de saúde anteriores que você gostaria de compartilhar comigo?"
-    - text: "Por favor, informe se você tem alguma doença ou condição médica pré-existente."
+  utter_ask_details:
+  - text: "Você poderia me dar mais detalhes, por favor?"
+  - text: "Para entender melhor, descreva mais sobre isso."
+  - text: "Para ajudar da melhor forma, preciso de mais informações."
 
-  utter_confirmar_anamnese:
-    - text: "Obrigado pelas informações. Vamos confirmar: seu nome é {nome}, você tem {idade} anos, seus sintomas são {sintomas} e suas condições médicas são {condicoes_medicas}. Está correto?"
-    - text: "Para confirmar: você se chama {nome}, tem {idade} anos, e está enfrentando {sintomas}, além de ter as condições médicas {condicoes_medicas}. Correto?"
-    - text: "Só para verificar: seu nome é {nome}, sua idade é {idade}, e você relatou {sintomas} e {condicoes_medicas} como suas condições. Está tudo certo?"
+  utter_acknowledge_problem:
+  - text: "Entendi o seu problema, vou verificar isso agora."
+  - text: "Obrigado por explicar. Estou analisando sua situação."
+  - text: "Compreendo. Deixe-me ver o que posso fazer a respeito."
+
+  utter_goodbye:
+  - text: "Se precisar de mais alguma coisa, estou aqui. Até mais!"
+  - text: "Tchau! Não hesite em retornar se precisar de mais ajuda."
+  - text: "Até a próxima! Sempre à disposição para ajudar."
 
 actions:
-  - validar_dados_paciente
-  - registrar_anamnese
+- utter_greet
+- utter_ask_contact
+- utter_acknowledge_contact
+- utter_ask_details
+- utter_acknowledge_problem
+- utter_goodbye
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
