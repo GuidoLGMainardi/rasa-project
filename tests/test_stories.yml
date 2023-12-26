@@ -1,75 +1,73 @@
-version: "2.0"
+version: "3.1"
 stories:
 
-- story: Teste do caminho padrão
+- story: Teste do caminho padrão completo
   steps:
-  - user: "Olá"
-    intent: greet
+  - intent: greet
+    user: "Olá"
   - action: utter_greet
   - action: utter_ask_contact
-  - user: "Meu nome é João e meu email é joao@example.com"
-    intent: provide_contact
+  - intent: provide_contact
+    user: "Sou o Guido, meu email é guido@gmail.com"
+    entities:
+      - name: "Guido"
+      - email: "guido@gmail.com"
+  - action: utter_acknowledge_contact
+  - intent: describe_problem
+    user: "Meu pedido não chegou"
+  - action: utter_ask_details
+  - intent: describe_details
+    user: "Fiz o pedido na semana passada e ainda não foi entregue"
+  - action: utter_acknowledge_problem
+  - intent: goodbye
+    user: "Tchau"
+  - action: utter_goodbye
+
+- story: Teste da interação com saudação e despedida imediata
+  steps:
+  - intent: greet
+    user: "Oi"
+  - action: utter_greet
+  - action: utter_ask_contact
+  - intent: goodbye
+    user: "Na verdade, deixe pra lá, tchau"
+  - action: utter_goodbye
+
+- story: Teste de fornecimento de contato seguido de despedida
+  steps:
+  - intent: greet
+    user: "Bom dia"
+  - action: utter_greet
+  - action: utter_ask_contact
+  - intent: provide_contact
+    user: "Meu nome é Maria e meu email é maria@example.com"
+    entities:
+      - name: "Maria"
+      - email: "maria@example.com"
+  - action: utter_acknowledge_contact
+  - intent: goodbye
+    user: "Preciso sair agora, tchau"
+  - action: utter_goodbye
+
+- story: Teste de descrição do problema sem fornecer contato
+  steps:
+  - intent: greet
+    user: "Olá"
+  - action: utter_greet
+  - action: utter_ask_contact
+  - intent: describe_problem
+    user: "Não consigo rastrear meu pedido"
+  - action: utter_ask_contact
+  - intent: provide_contact
+    user: "Sou Carlos, carlos@example.net"
+    entities:
+      - name: "Carlos"
+      - email: "carlos@example.net"
   - action: utter_acknowledge_contact
   - action: utter_ask_details
-  - user: "Meu pedido não chegou ainda"
-    intent: describe_problem
+  - intent: describe_details
+    user: "O código de rastreamento não mostra atualizações"
   - action: utter_acknowledge_problem
-  - user: "Tchau"
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: Teste com detalhes imediatos
-  steps:
-  - user: "Oi"
-    intent: greet
-  - action: utter_greet
-  - user: "Estou tendo um problema com meu pedido"
-    intent: describe_problem
-  - action: utter_ask_contact
-  - user: "Sou Maria, pode me contatar em maria@example.com"
-    intent: provide_contact
-  - action: utter_acknowledge_contact
-  - user: "Fiz o pedido na semana passada e ainda não foi entregue"
-    intent: describe_details
-  - action: utter_acknowledge_problem
-  - user: "Até mais"
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: Teste de desistência no meio da conversa
-  steps:
-  - user: "Olá"
-    intent: greet
-  - action: utter_greet
-  - action: utter_ask_contact
-  - user: "Meu nome é Carlos e meu email é carlos@example.net"
-    intent: provide_contact
-  - action: utter_acknowledge_contact
-  - user: "Na verdade, deixe pra lá"
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: Teste de retorno para fornecer mais detalhes
-  steps:
-  - user: "Bom dia"
-    intent: greet
-  - action: utter_greet
-  - action: utter_ask_contact
-  - user: "Eu sou a Ana, meu email é ana@exemplo.org"
-    intent: provide_contact
-  - action: utter_acknowledge_contact
-  - user: "A entrega do meu pedido está atrasada"
-    intent: describe_problem
-  - action: utter_acknowledge_problem
-  - user: "O código de rastreamento não mostra atualizações"
-    intent: describe_details
-  - action: utter_acknowledge_problem
-  - user: "Adeus"
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: Teste de início com despedida
-  steps:
-  - user: "Apenas passando para dizer tchau"
-    intent: goodbye
+  - intent: goodbye
+    user: "Ok, obrigado pela ajuda"
   - action: utter_goodbye
