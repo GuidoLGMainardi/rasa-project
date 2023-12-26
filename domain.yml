@@ -83,4 +83,8 @@ responses:
   utter_confirmar_anamnese:
     - text: "Obrigado pelas informações. Vamos confirmar: seu nome é {nome}, você tem {idade} anos, seus sintomas são {sintomas} e suas condições médicas são {condicoes_medicas}. Está correto?"
     - text: "Para confirmar: você se chama {nome}, tem {idade} anos, e está enfrentando {sintomas}, além de ter as condições médicas {condicoes_medicas}. Correto?"
-    - text: "Só para verificar: seu nome é {nome}, sua idade é {idade}, e você relatou {sintomas} e {condicoes_medicas} como suas condições. Está tudo certo?
+    - text: "Só para verificar: seu nome é {nome}, sua idade é {idade}, e você relatou {sintomas} e {condicoes_medicas} como suas condições. Está tudo certo?"
+
+actions:
+  - validar_dados_paciente
+  - registrar_anamnese
