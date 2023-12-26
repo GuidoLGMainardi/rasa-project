@@ -1,80 +1,39 @@
 version: "3.1"
+
 stories:
 
-- story: Teste anamnese completa com Ana
+- story: Anamnese simples
   steps:
-  - user: "Meu nome é Ana e eu tenho 25 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Ana"
-      - idade: "25"
+  - intent: informar_dados_pessoais
   - action: utter_perguntar_sintomas
-  - user: "Estou com dor de cabeça e febre."
-    intent: descrever_sintomas
-    entities:
-      - sintoma: "dor de cabeça"
-      - sintoma: "febre"
+  - intent: descrever_sintomas
   - action: utter_perguntar_condicoes_medicas
-  - user: "Tenho asma."
-    intent: informar_historico_medico
-    entities:
-      - condicao_medica: "asma"
+  - intent: informar_historico_medico
   - action: utter_confirmar_anamnese
 
-- story: Teste anamnese completa com Pedro
+- story: Anamnese com dados incorretos
   steps:
-  - user: "Olá, sou o Pedro e tenho 30 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Pedro"
-      - idade: "30"
+  - intent: informar_dados_pessoais
   - action: utter_perguntar_sintomas
-  - user: "Tenho sentido muita tosse e cansaço."
-    intent: descrever_sintomas
-    entities:
-      - sintoma: "tosse"
-      - sintoma: "cansaço"
+  - intent: descrever_sintomas
   - action: utter_perguntar_condicoes_medicas
-  - user: "Não tenho condições médicas preexistentes."
-    intent: informar_historico_medico
+  - intent: negar_informacoes
+  - action: utter_pedir_correcao
+  - intent: informar_dados_pessoais
   - action: utter_confirmar_anamnese
 
-- story: Teste correção de idade
+- story: Anamnese detalhada
   steps:
-  - user: "Me chamo Juliana."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Juliana"
-  - action: utter_perguntar_idade
-  - user: "Opa, esquecia a idade, tenho 28 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - idade: "28"
+  - intent: informar_dados_pessoais
   - action: utter_perguntar_sintomas
+  - intent: descrever_sintomas
+  - action: utter_perguntar_condicoes_medicas
+  - intent: informar_historico_medico
+  - action: utter_confirmar_anamnese
 
-- story: Teste questionamento sobre ser um robô
+- story: Pergunta sobre natureza do bot
   steps:
-  - user: "Você é um robô ou uma pessoa?"
-    intent: questionar_se_robo
+  - intent: questionar_se_robo
   - action: utter_questionar_se_robo
-  - user: "Entendi, obrigado."
-    intent: encerrar_conversa
-  - action: utter_despedida
-
-- story: Teste despedida após anamnese
-  steps:
-  - user: "Meu nome é Marcos e tenho 45 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Marcos"
-      - idade: "45"
+  - intent: informar_dados_pessoais
   - action: utter_perguntar_sintomas
-  - user: "Estou bem, não tenho sintomas."
-    intent: descrever_sintomas
-  - action: utter_perguntar_condicoes_medicas
-  - user: "Não tenho condições médicas."
-    intent: informar_historico_medico
-  - action: utter_confirmar_anamnese
-  - user: "Obrigado, isso é tudo."
-    intent: encerrar_conversa
-  - action: utter_despedida
