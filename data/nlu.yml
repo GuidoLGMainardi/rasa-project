@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 nlu:
 - intent: greet
   examples: |
@@ -12,13 +12,13 @@ nlu:
 
 - intent: provide_contact
   examples: |
-    - Meu nome é [João](name) e meu email é [joao@example.com](email)
-    - Sou [Maria, pode me contatar em [maria@example.com](email)
-    - Eu sou o [Carlos](name) e meu contato é [carlos@example.net](email)
-    - Me chamo [Ana](name), meu e-mail é [ana@exemplo.org](email)
-    - Pode me chamar de [Pedro](name). Meu email é [pedro@exemplo.br](email)
-    - Eu sou a [Luísa](name), meu endereço de email é [luisa@exemplo.com](email)
-    - Meu nome é [Ricardo](name) e meu e-mail para contato é [ricardo@exemplo.com](email)
+    - Meu nome é [João]{"entity": "name"}  e meu email é [joao@example.com]{"entity": "email"}
+    - Sou [Maria]{"entity": "name"}, pode me contatar em [maria@example.com]{"entity": "email"}
+    - Eu sou o [Carlos]{"entity": "name"} e meu contato é [carlos@example.net]{"entity": "email"}
+    - Me chamo [Ana]{"entity": "name"}, meu e-mail é [ana@exemplo.org]{"entity": "email"}
+    - Pode me chamar de [Pedro]{"entity": "name"}. Meu email é [pedro@exemplo.br]{"entity": "email"}
+    - Eu sou a [Luísa]{"entity": "name"}, meu endereço de email é [luisa@exemplo.com]{"entity": "email"}
+    - Meu nome é [Ricardo]{"entity": "name"} e meu e-mail para contato é [ricardo@exemplo.com]{"entity": "email"}
 
 - intent: describe_problem
   examples: |
@@ -42,12 +42,7 @@ nlu:
 - intent: goodbye
   examples: |
     - Tchau
-    - Até mais
-    - Adeus
-    - Até logo
-    - Até a próxima
-    - Falamos depois
-    - Vou sair agora
+    - Certo, muito obrigado
 
 - lookup: name
   examples: |
@@ -55,7 +50,14 @@ nlu:
     - Maria
     - Pedro
     - Ana
+    - Guido
 
 - regex: email
   examples: |
     - [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,} 
+    
+- synonym: Tchau
+  examples: |
+    - Até mais
+    - Adeus
+    - Até a próxima
