@@ -1,65 +1,80 @@
 version: "3.1"
-
 stories:
 
-- story: Anamnese simples
+- story: Teste anamnese completa com Ana
   steps:
-  - intent: informar_dados_pessoais
+  - user: "Meu nome é Ana e eu tenho 25 anos."
+    intent: informar_dados_pessoais
     entities:
       - nome: "Ana"
       - idade: "25"
   - action: utter_perguntar_sintomas
-  - intent: descrever_sintomas
+  - user: "Estou com dor de cabeça e febre."
+    intent: descrever_sintomas
     entities:
       - sintoma: "dor de cabeça"
+      - sintoma: "febre"
   - action: utter_perguntar_condicoes_medicas
-  - intent: informar_historico_medico
+  - user: "Tenho asma."
+    intent: informar_historico_medico
     entities:
       - condicao_medica: "asma"
   - action: utter_confirmar_anamnese
 
-- story: Anamnese com dados incorretos
+- story: Teste anamnese completa com Pedro
   steps:
-  - intent: informar_dados_pessoais
-    entities:
-      - nome: "Carlos"
-      - idade: "40"
-  - action: utter_perguntar_sintomas
-  - intent: descrever_sintomas
-    entities:
-      - sintoma: "febre"
-  - action: utter_perguntar_condicoes_medicas
-  - intent: negar_informacoes
-  - action: utter_pedir_correcao
-  - intent: informar_dados_pessoais
-    entities:
-      - nome: "Carlos"
-      - idade: "39"
-  - action: utter_confirmar_anamnese
-
-- story: Anamnese detalhada
-  steps:
-  - intent: informar_dados_pessoais
-    entities:
-      - nome: "Juliana"
-      - idade: "35"
-  - action: utter_perguntar_sintomas
-  - intent: descrever_sintomas
-    entities:
-      - sintoma: "náuseas"
-      - sintoma: "tonturas"
-  - action: utter_perguntar_condicoes_medicas
-  - intent: informar_historico_medico
-    entities:
-      - condicao_medica: "diabetes tipo 2"
-  - action: utter_confirmar_anamnese
-
-- story: Pergunta sobre natureza do bot
-  steps:
-  - intent: questionar_se_robo
-  - action: utter_questionar_se_robo
-  - intent: informar_dados_pessoais
+  - user: "Olá, sou o Pedro e tenho 30 anos."
+    intent: informar_dados_pessoais
     entities:
       - nome: "Pedro"
-      - idade: "22"
+      - idade: "30"
   - action: utter_perguntar_sintomas
+  - user: "Tenho sentido muita tosse e cansaço."
+    intent: descrever_sintomas
+    entities:
+      - sintoma: "tosse"
+      - sintoma: "cansaço"
+  - action: utter_perguntar_condicoes_medicas
+  - user: "Não tenho condições médicas preexistentes."
+    intent: informar_historico_medico
+  - action: utter_confirmar_anamnese
+
+- story: Teste correção de idade
+  steps:
+  - user: "Me chamo Juliana."
+    intent: informar_dados_pessoais
+    entities:
+      - nome: "Juliana"
+  - action: utter_perguntar_idade
+  - user: "Opa, esquecia a idade, tenho 28 anos."
+    intent: informar_dados_pessoais
+    entities:
+      - idade: "28"
+  - action: utter_perguntar_sintomas
+
+- story: Teste questionamento sobre ser um robô
+  steps:
+  - user: "Você é um robô ou uma pessoa?"
+    intent: questionar_se_robo
+  - action: utter_questionar_se_robo
+  - user: "Entendi, obrigado."
+    intent: encerrar_conversa
+  - action: utter_despedida
+
+- story: Teste despedida após anamnese
+  steps:
+  - user: "Meu nome é Marcos e tenho 45 anos."
+    intent: informar_dados_pessoais
+    entities:
+      - nome: "Marcos"
+      - idade: "45"
+  - action: utter_perguntar_sintomas
+  - user: "Estou bem, não tenho sintomas."
+    intent: descrever_sintomas
+  - action: utter_perguntar_condicoes_medicas
+  - user: "Não tenho condições médicas."
+    intent: informar_historico_medico
+  - action: utter_confirmar_anamnese
+  - user: "Obrigado, isso é tudo."
+    intent: encerrar_conversa
+  - action: utter_despedida
