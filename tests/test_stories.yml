@@ -1,80 +1,75 @@
-version: "3.1"
+version: "2.0"
 stories:
 
-- story: Teste anamnese completa com Ana
+- story: Teste do caminho padrão
   steps:
-  - user: "Meu nome é Ana e eu tenho 25 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Ana"
-      - idade: "25"
-  - action: utter_perguntar_sintomas
-  - user: "Estou com dor de cabeça e febre."
-    intent: descrever_sintomas
-    entities:
-      - sintoma: "dor de cabeça"
-      - sintoma: "febre"
-  - action: utter_perguntar_condicoes_medicas
-  - user: "Tenho asma."
-    intent: informar_historico_medico
-    entities:
-      - condicao_medica: "asma"
-  - action: utter_confirmar_anamnese
+  - user: "Olá"
+    intent: greet
+  - action: utter_greet
+  - action: utter_ask_contact
+  - user: "Meu nome é João e meu email é joao@example.com"
+    intent: provide_contact
+  - action: utter_acknowledge_contact
+  - action: utter_ask_details
+  - user: "Meu pedido não chegou ainda"
+    intent: describe_problem
+  - action: utter_acknowledge_problem
+  - user: "Tchau"
+    intent: goodbye
+  - action: utter_goodbye
 
-- story: Teste anamnese completa com Pedro
+- story: Teste com detalhes imediatos
   steps:
-  - user: "Olá, sou o Pedro e tenho 30 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Pedro"
-      - idade: "30"
-  - action: utter_perguntar_sintomas
-  - user: "Tenho sentido muita tosse e cansaço."
-    intent: descrever_sintomas
-    entities:
-      - sintoma: "tosse"
-      - sintoma: "cansaço"
-  - action: utter_perguntar_condicoes_medicas
-  - user: "Não tenho condições médicas preexistentes."
-    intent: informar_historico_medico
-  - action: utter_confirmar_anamnese
+  - user: "Oi"
+    intent: greet
+  - action: utter_greet
+  - user: "Estou tendo um problema com meu pedido"
+    intent: describe_problem
+  - action: utter_ask_contact
+  - user: "Sou Maria, pode me contatar em maria@example.com"
+    intent: provide_contact
+  - action: utter_acknowledge_contact
+  - user: "Fiz o pedido na semana passada e ainda não foi entregue"
+    intent: describe_details
+  - action: utter_acknowledge_problem
+  - user: "Até mais"
+    intent: goodbye
+  - action: utter_goodbye
 
-- story: Teste correção de idade
+- story: Teste de desistência no meio da conversa
   steps:
-  - user: "Me chamo Juliana."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Juliana"
-  - action: utter_perguntar_idade
-  - user: "Opa, esquecia a idade, tenho 28 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - idade: "28"
-  - action: utter_perguntar_sintomas
+  - user: "Olá"
+    intent: greet
+  - action: utter_greet
+  - action: utter_ask_contact
+  - user: "Meu nome é Carlos e meu email é carlos@example.net"
+    intent: provide_contact
+  - action: utter_acknowledge_contact
+  - user: "Na verdade, deixe pra lá"
+    intent: goodbye
+  - action: utter_goodbye
 
-- story: Teste questionamento sobre ser um robô
+- story: Teste de retorno para fornecer mais detalhes
   steps:
-  - user: "Você é um robô ou uma pessoa?"
-    intent: questionar_se_robo
-  - action: utter_questionar_se_robo
-  - user: "Entendi, obrigado."
-    intent: encerrar_conversa
-  - action: utter_despedida
+  - user: "Bom dia"
+    intent: greet
+  - action: utter_greet
+  - action: utter_ask_contact
+  - user: "Eu sou a Ana, meu email é ana@exemplo.org"
+    intent: provide_contact
+  - action: utter_acknowledge_contact
+  - user: "A entrega do meu pedido está atrasada"
+    intent: describe_problem
+  - action: utter_acknowledge_problem
+  - user: "O código de rastreamento não mostra atualizações"
+    intent: describe_details
+  - action: utter_acknowledge_problem
+  - user: "Adeus"
+    intent: goodbye
+  - action: utter_goodbye
 
-- story: Teste despedida após anamnese
+- story: Teste de início com despedida
   steps:
-  - user: "Meu nome é Marcos e tenho 45 anos."
-    intent: informar_dados_pessoais
-    entities:
-      - nome: "Marcos"
-      - idade: "45"
-  - action: utter_perguntar_sintomas
-  - user: "Estou bem, não tenho sintomas."
-    intent: descrever_sintomas
-  - action: utter_perguntar_condicoes_medicas
-  - user: "Não tenho condições médicas."
-    intent: informar_historico_medico
-  - action: utter_confirmar_anamnese
-  - user: "Obrigado, isso é tudo."
-    intent: encerrar_conversa
-  - action: utter_despedida
+  - user: "Apenas passando para dizer tchau"
+    intent: goodbye
+  - action: utter_goodbye
