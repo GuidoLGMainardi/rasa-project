@@ -1,30 +1,31 @@
 # Configuração de idioma e pipeline
-language: en
+language: pt
 
 pipeline:
-  - name: WhitespaceTokenizer
-  - name: RegexFeaturizer
-  - name: LexicalSyntacticFeaturizer
-  - name: CountVectorsFeaturizer
-  - name: DIETClassifier
-    epochs: 100
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: DIETClassifier
+  epochs: 100
     # Ativa o uso de lookup tables e regexes para o DIETClassifier
-    use_lookup_tables: true
-    use_regexes: true
-  - name: EntitySynonymMapper
-  - name: ResponseSelector
-    epochs: 100
-  - name: FallbackClassifier
-    threshold: 0.7
-    ambiguity_threshold: 0.1
+  use_lookup_tables: true
+  use_regexes: true
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+- name: FallbackClassifier
+  threshold: 0.7
+  ambiguity_threshold: 0.1
 
 # Configuração de políticas
 policies:
-  - name: MemoizationPolicy
-    max_history: 5
-  - name: TEDPolicy
-    max_history: 5
-    epochs: 100
-  - name: RulePolicy
+- name: MemoizationPolicy
+  max_history: 5
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+- name: RulePolicy
 
 # Configurações adicionais podem ser incluídas dependendo das necessidades específicas do seu projeto.
+assistant_id: 20231226-170025-regular-coulomb
