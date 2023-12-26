@@ -1,111 +1,61 @@
-version: "3.1"
-
+version: "2.0"
 nlu:
-
-- intent: confirmar_informacoes
+- intent: greet
   examples: |
-    - Sim, está tudo correto
-    - Isso mesmo
-    - Está correto, obrigado
-    - Tudo certo com essas informações
+    - Olá
+    - Oi
+    - Bom dia
+    - Boa tarde
+    - Boa noite
+    - Ei
+    - Opa
 
-- intent: negar_informacoes
+- intent: provide_contact
   examples: |
-    - Não, isso não está certo
-    - Há um erro aí
-    - Isso não está correto
-    - Na verdade, não é bem assim
+    - Meu nome é [João](name) e meu email é [joao@example.com](email)
+    - Sou [Maria, pode me contatar em [maria@example.com](email)
+    - Eu sou o [Carlos](name) e meu contato é [carlos@example.net](email)
+    - Me chamo [Ana](name), meu e-mail é [ana@exemplo.org](email)
+    - Pode me chamar de [Pedro](name). Meu email é [pedro@exemplo.br](email)
+    - Eu sou a [Luísa](name), meu endereço de email é [luisa@exemplo.com](email)
+    - Meu nome é [Ricardo](name) e meu e-mail para contato é [ricardo@exemplo.com](email)
 
-- intent: questionar_se_robo
+- intent: describe_problem
   examples: |
-    - Você é um robô?
-    - Isso é um chatbot?
-    - Você é humano ou um programa de computador?
-    - Isso é uma inteligência artificial?
-    - Você é real ou apenas um software?
-    - Isso é uma pessoa ou um bot falando?
-    - Com quem estou falando?
-    
-    
+    - Não estou conseguindo acompanhar meu pedido
+    - Meu pedido não chegou
+    - Meu pedido veio com defeito
+    - Eu nao comprei do site de voces
+    - Meu pedido está demorando muito para chegar
 
-- intent: informar_dados_pessoais
+- intent: describe_details
   examples: |
-    - Meu nome é [Ana](nome) e eu tenho [25](idade) anos
-    - Eu me chamo [Carlos](nome), [40](idade) anos
-    - Sou [Juliana](nome), [35](idade) anos
-    - Chamo-me [Pedro](nome) e tenho [22](idade) anos
-    - [Paulo](nome), [90](idade) anos
-
-- lookup: nome
-  examples: |
-    - Ana
-    - Carlos
-    - Juliana
-    - Pedro
-    # (outros nomes comuns)
+    - Fiz o pedido na semana passada e ainda não foi entregue
+    - O código de rastreamento não mostra nenhuma atualização
+    - Era para ter chegado na terça-feira e já é quinta-feira
+    - Não recebi nenhum aviso de atraso ou problema na entrega
+    - O pagamento foi confirmado mas o pedido não foi enviado
+    - Comprei três itens, mas o email de confirmação só listou dois
+    - Estou tentando entrar em contato com o suporte há dias sem resposta
 
 
-- intent: descrever_sintomas
+- intent: goodbye
   examples: |
-    - Tenho tido [dores constantes no estômago](sintoma)
-    - Sinto uma [dor aguda no peito](sintoma) às vezes
-    - Estou com [febre](sintoma) e [dor nas articulações](sintoma)
-    - Me sinto com [náuseas](sintoma) e [tonturas](sintoma) frequentes
-    - Tenho experimentado [tosse seca](sintoma) e [fadiga](sintoma)
+    - Tchau
+    - Até mais
+    - Adeus
+    - Até logo
+    - Até a próxima
+    - Falamos depois
+    - Vou sair agora
 
-- intent: informar_historico_medico
+- lookup: name
   examples: |
-    - Sou alérgico a [penicilina](medicamento)
-    - Tenho histórico de [asma](condicao_medica) na família
-    - Fui diagnosticado com [hipertensão](condicao_medica)
-    - Estou em tratamento para [diabetes tipo 2](condicao_medica)
-    - Tenho uma prescrição regular de [metformina](medicamento)
-    
-- lookup: nome
-  examples: |
-    - Ana
-    - Carlos
-    - Juliana
-    - Pedro
     - João
-    - Marta
-    - Lucas
-    - Beatriz
-    - Rafael
-    - Sofia
+    - Maria
+    - Pedro
+    - Ana
 
-- lookup: sintoma
+- regex: email
   examples: |
-    - dor de cabeça
-    - náusea
-    - febre
-    - tosse
-    - tontura
-    - fadiga
-    - perda de apetite
-    - dor muscular
-
-- lookup: medicamento
-  examples: |
-    - ibuprofeno
-    - paracetamol
-    - amoxicilina
-    - metformina
-    - insulina
-    - omeprazol
-    - cetirizina
-
-- lookup: condicao_medica
-  examples: |
-    - diabetes
-    - hipertensão
-    - asma
-    - artrite
-    - anemia
-    - colesterol alto
-    - obesidade
-    - doença cardíaca
-
-- regex: idade
-  examples: |
-    - [0-9]{1,3}
+    - [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,} 
