@@ -1,30 +1,27 @@
-version: "3.1"
-
+version: "2.0"
 rules:
 
-- rule: Saudação inicial
+- rule: Saudar no início da conversa
   steps:
-  - intent: iniciar_conversa
-  - action: utter_saudacao
-  - action: utter_perguntar_nome
+  - intent: greet
+  - action: utter_greet
 
-- rule: Confirmar anamnese
+- rule: Responder ao fornecimento de contato
   steps:
-  - intent: confirmar_informacoes
-  - action: utter_confirmar_anamnese
-  - action: registrar_anamnese
+  - intent: provide_contact
+  - action: utter_acknowledge_contact
 
-- rule: Corrigir informações
+- rule: Perguntar detalhes após descrição do problema
   steps:
-  - intent: negar_informacoes
-  - action: utter_pedir_correcao
+  - intent: describe_problem
+  - action: utter_ask_details
 
-- rule: Despedida
+- rule: Responder após fornecimento de detalhes
   steps:
-  - intent: encerrar_conversa
-  - action: utter_despedida
+  - intent: describe_details
+  - action: utter_acknowledge_problem
 
-- rule: Resposta à pergunta sobre ser um robô
+- rule: Despedida a qualquer momento
   steps:
-  - intent: questionar_se_robo
-  - action: utter_questionar_se_robo
+  - intent: goodbye
+  - action: utter_goodbye
