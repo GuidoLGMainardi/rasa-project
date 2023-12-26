@@ -35,9 +35,9 @@ responses:
   - text: "Para que eu possa ajudar, preciso do seu nome e email."
 
   utter_acknowledge_contact:
-  - text: "Obrigado! Qual é o problema com o qual você precisa de ajuda?"
-  - text: "Recebi seus dados. Por favor, descreva seu problema."
-  - text: "Agradeço pelas informações. Me conte mais sobre o seu problema."
+  - text: "Obrigado {name}! Qual é o problema com o qual você precisa de ajuda?"
+  - text: "Recebi seus dados, {name}. Por favor, descreva seu problema."
+  - text: "{name}, agradeço pelas informações. Me conte mais sobre o seu problema."
 
   utter_ask_details:
   - text: "Você poderia me dar mais detalhes, por favor?"
